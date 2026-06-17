@@ -3,6 +3,12 @@ namespace MidLine {
     let _lineSprite: Sprite = null
     let _rectSprite: Sprite = null
 
+    function setupSprite(s: Sprite): void {
+        s.setFlag(SpriteFlag.RelativeToCamera, true)
+        s.setFlag(SpriteFlag.Ghost, true)
+        s.z = scene.HUD_Z - 5
+    }
+
     //% blockId="midline_show"
     //% block="show midline color $color"
     //% color.shadow="colorindexpicker"
@@ -10,7 +16,8 @@ namespace MidLine {
         if (_lineSprite) _lineSprite.destroy()
         let img = image.create(160, 1)
         img.fill(color)
-        _lineSprite = sprites.createProjectile(img, 0, 0, 0)
+        _lineSprite = sprites.create(img, 0)
+        setupSprite(_lineSprite)
         _lineSprite.setPosition(80, 60)
     }
 
@@ -22,7 +29,8 @@ namespace MidLine {
         if (_lineSprite) _lineSprite.destroy()
         let img = image.create(160, 1)
         img.fill(color)
-        _lineSprite = sprites.createProjectile(img, 0, 0, 0)
+        _lineSprite = sprites.create(img, 0)
+        setupSprite(_lineSprite)
         _lineSprite.setPosition(80, y)
     }
 
@@ -40,7 +48,8 @@ namespace MidLine {
         let h = Math.abs(y2 - y1) + 1
         let img = image.create(w, h)
         img.fill(15)
-        _rectSprite = sprites.createProjectile(img, 0, 0, 0)
+        _rectSprite = sprites.create(img, 0)
+        setupSprite(_rectSprite)
         _rectSprite.setPosition(left + Math.floor(w / 2), top + Math.floor(h / 2))
     }
 }
