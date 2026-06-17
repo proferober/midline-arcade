@@ -1,4 +1,5 @@
 //% weight=100 color=#FF6B6B icon="\u2500"
+declare var motors: any;
 namespace MidLine {
     let _lineSprite: Sprite = null
     let _rectSprite: Sprite = null
@@ -69,5 +70,41 @@ namespace MidLine {
         _textSprite = sprites.create(img, 0)
         setupSprite(_textSprite)
         _textSprite.setPosition(x + Math.floor(w / 2), y + Math.floor(h / 2))
+    }
+
+    let _motorSprite: Sprite = null
+    let _motorReady = false
+    let _motorX = 0
+    let _motorY = 0
+    let _showMotor = false
+
+    //% blockId="midline_motor"
+    //% block="show motor A position at x $x y $y"
+    //% x.min=0 x.max=159
+    //% y.min=0 y.max=119
+    export function showMotorAPosition(x: number, y: number): void {
+        _motorX = x
+        _motorY = y
+        _showMotor = true
+        if (_motorReady) return
+        _motorReady = true
+        game.eventContext().registerFrameHandler(scene.UPDATE_PRIORITY + 5, () => {
+            if (!_showMotor) return
+            let pos = 0
+            if (motors && motors.portA) pos = motors.portA.position()
+            let text = pos.toString()
+            let w = text.length * 6 + 2
+            let h = 7
+            let img = image.create(w, h)
+            img.print(text, 1, 1, 15, image.font5)
+            if (_motorSprite) {
+                _motorSprite.setImage(img)
+                _motorSprite.setPosition(_motorX + Math.floor(w / 2), _motorY + Math.floor(h / 2))
+            } else {
+                _motorSprite = sprites.create(img, 0)
+                setupSprite(_motorSprite)
+                _motorSprite.setPosition(_motorX + Math.floor(w / 2), _motorY + Math.floor(h / 2))
+            }
+        })
     }
 }
