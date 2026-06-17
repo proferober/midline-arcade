@@ -30,8 +30,8 @@ namespace MidLine {
     //% block="show white rectangle from x $x1 y $y1 to x $x2 y $y2"
     //% x1.min=0 x1.max=159
     //% y1.min=0 y1.max=119
-    //% x2.min=0 x2.max=159
-    //% y2.min=0 y2.max=119
+    //% x2.min=0 x2.max=159 x2.defl=100
+    //% y2.min=0 y2.max=119 y2.defl=100
     export function showWhiteRectangle(x1: number, y1: number, x2: number, y2: number): void {
         if (_rectSprite) _rectSprite.destroy()
         let left = Math.min(x1, x2)
