@@ -1,7 +1,7 @@
 {
     "name": "midline",
-    "version": "0.0.1",
-    "description": "TEST",
+    "version": "0.0.2",
+    "description": "MidLine - draw lines and rectangles",
     "license": "MIT",
     "dependencies": {
         "device": "*"
