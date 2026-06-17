@@ -1,0 +1,16 @@
+{
+    "name": "midline",
+    "version": "0.0.1",
+    "description": "TEST",
+    "license": "MIT",
+    "dependencies": {
+        "device": "*"
+    },
+    "files": [
+        "main.ts"
+    ],
+    "public": true,
+    "supportedTargets": [
+        "arcade"
+    ]
+}

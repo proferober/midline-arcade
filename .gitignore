@@ -1,0 +1,5 @@
+node_modules/
+built/
+*/built/
+*.js
+*.d.ts
