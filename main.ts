@@ -2,6 +2,7 @@
 namespace MidLine {
     let _lineSprite: Sprite = null
     let _rectSprite: Sprite = null
+    let _textSprite: Sprite = null
 
     function setupSprite(s: Sprite): void {
         s.setFlag(SpriteFlag.RelativeToCamera, true)
@@ -51,5 +52,22 @@ namespace MidLine {
         _rectSprite = sprites.create(img, 0)
         setupSprite(_rectSprite)
         _rectSprite.setPosition(left + Math.floor(w / 2), top + Math.floor(h / 2))
+    }
+
+    //% blockId="midline_text"
+    //% block="show text $text at x $x y $y color $color"
+    //% x.min=0 x.max=159
+    //% y.min=0 y.max=119
+    //% color.shadow="colorindexpicker"
+    export function showText(text: string, x: number, y: number, color: number): void {
+        if (_textSprite) _textSprite.destroy()
+        if (text.length == 0) return
+        let w = text.length * 6 + 2
+        let h = 7
+        let img = image.create(w, h)
+        img.print(text, 1, 1, color, image.font5)
+        _textSprite = sprites.create(img, 0)
+        setupSprite(_textSprite)
+        _textSprite.setPosition(x + Math.floor(w / 2), y + Math.floor(h / 2))
     }
 }
