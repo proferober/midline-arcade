@@ -1,7 +1,7 @@
 {
     "name": "midline",
-    "version": "0.0.3",
-    "description": "MidLine - draw lines, rectangles, text, and read SPIKE Prime motors",
+    "version": "0.0.2",
+    "description": "MidLine - draw lines, rectangles, and text",
     "license": "MIT",
     "dependencies": {
         "device": "*"
@@ -11,7 +11,6 @@
     ],
     "public": true,
     "supportedTargets": [
-        "arcade",
-        "spike"
+        "arcade"
     ]
 }
